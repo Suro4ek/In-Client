@@ -1,15 +1,19 @@
 using System.Net;
 
+
 namespace In_Client
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        public ApplicationSettings application;
+        public LoginForm(ApplicationSettings applicationSettings)
         {
             InitializeComponent();
+            this.application = applicationSettings;
         }
 
-        const string loginUrl = "http://localhost:8080/login/";
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -18,7 +22,7 @@ namespace In_Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(username.Text == "")
+            if (username.Text == "")
             {
                 MessageBox.Show("Вы не имя пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 username.Focus();
@@ -42,9 +46,11 @@ namespace In_Client
                     {"username", username},
                     {"password", password},
                 };
-                var res = await client.PostAsync(loginUrl, new FormUrlEncodedContent(data));
-                if(res != null)
+                client.Timeout = TimeSpan.FromSeconds(1);
+                try
                 {
+                    var res = await client.PostAsync(application.ServerURL + "login", new FormUrlEncodedContent(data));
+
                     if (res.StatusCode == HttpStatusCode.NotFound)
                     {
                         MessageBox.Show("Такого пользователя нет", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,9 +58,45 @@ namespace In_Client
                     else if (res.StatusCode == HttpStatusCode.Unauthorized)
                     {
                         MessageBox.Show("Неправильный пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }else if(res.StatusCode == HttpStatusCode.OK)
+                    {
+                        var stream = res.Content.ReadAsStream();
+                        var json = await System.Text.Json.JsonSerializer.DeserializeAsync<auth.JWTJson>(stream);
+                        application.JwtToken = json.token;
+                        application.Save();
+                        this.DialogResult = DialogResult.OK;
                     }
                 }
+                catch (TaskCanceledException ex)
+                {
+                    MessageBox.Show("Сервер не отвечает", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void setupServerString(object sender, EventArgs e)
+        {
+            InputForm inputForm = new InputForm("Введите адресс сервера");
+            inputForm.button.Text = "Сохранить";
+            inputForm.button.Click += new EventHandler((object s, EventArgs e1) =>
+            {
+                string textboxString = inputForm.textBox.Text;
+                if (textboxString == "" || !Uri.IsWellFormedUriString(textboxString, UriKind.Absolute))
+                {
+                    MessageBox.Show("Введите корректный адресс", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                application.ServerURL = textboxString;
+                application.Save();
+                inputForm.Close();
+            });
+
+            inputForm.ShowDialog();
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

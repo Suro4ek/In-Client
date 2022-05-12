@@ -34,6 +34,11 @@
             this.password = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.свойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.установитьСерверToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // username
@@ -88,7 +93,40 @@
             this.label3.TabIndex = 5;
             this.label3.Visible = false;
             // 
-            // Form1
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.свойстваToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(391, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // свойстваToolStripMenuItem
+            // 
+            this.свойстваToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.установитьСерверToolStripMenuItem,
+            this.выходToolStripMenuItem});
+            this.свойстваToolStripMenuItem.Name = "свойстваToolStripMenuItem";
+            this.свойстваToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.свойстваToolStripMenuItem.Text = "Свойства";
+            // 
+            // установитьСерверToolStripMenuItem
+            // 
+            this.установитьСерверToolStripMenuItem.Name = "установитьСерверToolStripMenuItem";
+            this.установитьСерверToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.установитьСерверToolStripMenuItem.Text = "Установить сервер";
+            this.установитьСерверToolStripMenuItem.Click += new System.EventHandler(this.setupServerString);
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.Close);
+            // 
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,9 +138,13 @@
             this.Controls.Add(this.password);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.username);
-            this.Name = "Form1";
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "LoginForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +158,9 @@
         private TextBox password;
         private Button button1;
         private Label label3;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem свойстваToolStripMenuItem;
+        private ToolStripMenuItem установитьСерверToolStripMenuItem;
+        private ToolStripMenuItem выходToolStripMenuItem;
     }
 }
