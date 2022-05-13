@@ -12,21 +12,34 @@ namespace In_Client
 {
     public partial class InputForm : Form
     {
-        public string labelString;
-        public TextBox textBox;
+        int top = 1;
         public Button button;
-        public InputForm(string label)
+        public InputForm()
         {
             InitializeComponent();
-            labelString = label;
-            textBox = textBox1;
-            label1.Text = labelString;
-            button = button1;
+            this.button = button1;
         }
 
-        private void InputForm_Load(object sender, EventArgs e)
+        public TextBox addTextBox()
         {
+            TextBox textBox = new TextBox();
+            textBox.Left = 30;
+            textBox.Top = top * 30;
+            textBox.Width = 200;
+            top += 1;
+            return textBox;
+        }
 
+        public Label addLabel(String text)
+        {
+            Label label = new Label();
+            label.Left = 30;
+            label.Text = text;
+            label.Width = 200;
+            label.Left = 30;
+            label.Top = top * 30;
+            top += 1;
+            return label;
         }
     }
 }

@@ -102,6 +102,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(391, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // свойстваToolStripMenuItem
             // 
@@ -115,14 +116,14 @@
             // установитьСерверToolStripMenuItem
             // 
             this.установитьСерверToolStripMenuItem.Name = "установитьСерверToolStripMenuItem";
-            this.установитьСерверToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.установитьСерверToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.установитьСерверToolStripMenuItem.Text = "Установить сервер";
             this.установитьСерверToolStripMenuItem.Click += new System.EventHandler(this.setupServerString);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.Close);
             // 

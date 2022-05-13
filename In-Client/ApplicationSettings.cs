@@ -11,6 +11,7 @@ namespace In_Client
 {
     public class ApplicationSettings : ApplicationSettingsBase
     {
+
         [UserScopedSetting()]
         [DefaultSettingValue("http://localhost:8080")]
         public String ServerURL

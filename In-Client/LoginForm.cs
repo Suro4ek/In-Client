@@ -13,8 +13,6 @@ namespace In_Client
         }
 
 
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -47,6 +45,7 @@ namespace In_Client
                     {"password", password},
                 };
                 client.Timeout = TimeSpan.FromSeconds(1);
+               
                 try
                 {
                     var res = await client.PostAsync(application.ServerURL + "login", new FormUrlEncodedContent(data));
@@ -76,11 +75,15 @@ namespace In_Client
 
         private void setupServerString(object sender, EventArgs e)
         {
-            InputForm inputForm = new InputForm("¬ведите адресс сервера");
+            InputForm inputForm = new InputForm();
+            inputForm.Controls.Add(inputForm.addLabel("¬ведите адресс сервера"));
+            TextBox textBox = inputForm.addTextBox();
+            textBox.Text = application.ServerURL;
+            inputForm.Controls.Add(textBox);
             inputForm.button.Text = "—охранить";
             inputForm.button.Click += new EventHandler((object s, EventArgs e1) =>
             {
-                string textboxString = inputForm.textBox.Text;
+                string textboxString =  textBox.Text;
                 if (textboxString == "" || !Uri.IsWellFormedUriString(textboxString, UriKind.Absolute))
                 {
                     MessageBox.Show("¬ведите корректный адресс", "ќшибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -97,6 +100,11 @@ namespace In_Client
         private void Close(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
