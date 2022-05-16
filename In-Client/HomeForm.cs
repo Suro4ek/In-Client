@@ -25,33 +25,33 @@ namespace In_Client
                     return null;
                 });
             }
-            label1.Text = Program.localSettings.user.familia + " " + Program.localSettings.user.name;
+            Controls.User.UC_Inventory inventory = new Controls.User.UC_Inventory();
+            addUserControl(inventory);
+
             if (Program.localSettings.user.role.Equals("user"))
             {
-                button2.Visible = true;
+           
             }
         }
-
-        private void HomeForm_Load(object sender, EventArgs e)
+        private void addUserControl(UserControl user)
         {
-            
-        }
-
-        private void ClickItems(object sender, EventArgs e)
-        {
-            ListItems listItems = new ListItems();
-            listItems.Show();
-        }
-
-        private void ListUsersClick(object sender, EventArgs e)
-        {
-
+            user.Dock = DockStyle.Fill;
+            panelContainer.Controls.Clear();
+            panelContainer.Controls.Add(user);
+            user.BringToFront();
         }
 
         private void ExitClick(object sender, EventArgs e)
         {
             Program.applicationSettings.JwtToken = "";
             Close();
+        }
+
+
+        private void airButton1_Click(object sender, EventArgs e)
+        {
+            Controls.User.UC_Inventory inventory = new Controls.User.UC_Inventory();
+            addUserControl(inventory);
         }
     } 
 }

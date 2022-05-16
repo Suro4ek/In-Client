@@ -35,6 +35,7 @@ namespace In_Client
         }
 
         [UserScopedSetting()]
+        [DefaultSettingValue("")]
         public String JwtToken
         {
             get
