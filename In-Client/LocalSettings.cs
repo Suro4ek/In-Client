@@ -8,6 +8,6 @@ namespace In_Client
 {
     internal class LocalSettings
     {
-        public auth.User user { get; set; }
+        public auth.User? user { get; set; }
     }
 }

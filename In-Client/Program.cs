@@ -9,28 +9,23 @@ namespace In_Client
         ///  The main entry point for the application.
         /// </summary>
         /// 
-        public static ApplicationSettings applicationSettings;
-        public static LocalSettings localSettings;
+        public static ApplicationSettings? applicationSettings;
+        public static LocalSettings? localSettings;
         [STAThread]
         static void Main()
         {
-
             applicationSettings = new ApplicationSettings();
             localSettings = new LocalSettings();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.ApplicationExit += new EventHandler(OnApplicationExit);
             if(applicationSettings.JwtToken != "")
             {
-
-                auth.WebAuth.RequestGet("user", (res) =>
+                auth.WebAuth.RequestGet("api/user", (res) =>
                 {
-                    var stream = res.Content.ReadAsStream();
-                    var json = System.Text.Json.JsonSerializer.Deserialize<auth.User>(stream);
+                    var json = res.GetJsonAsync<auth.User>().Result;
                     localSettings.user = json;
                     Application.Run(new HomeForm());
-                    return null;
                 });
             }
             else
@@ -53,9 +48,6 @@ namespace In_Client
                 }
 
         }
-        public static void OnApplicationExit(object sender, EventArgs e)
-        {
-            applicationSettings.Save();
-        }
+
     }
 }

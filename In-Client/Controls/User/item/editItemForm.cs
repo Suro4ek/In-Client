@@ -12,9 +12,9 @@ namespace In_Client.Controls.User
 {
     public partial class editItemForm : Form
     {
-        Func<items.Item, object> func;
+        Action<items.Item> func;
         int id;
-        public editItemForm(int id, string name, string productName, string serialNumber, Func<items.Item, object> func)
+        public editItemForm(int id, string name, string productName, string serialNumber, Action<items.Item> func)
         {
             this.id = id;
             InitializeComponent();
@@ -28,17 +28,15 @@ namespace In_Client.Controls.User
         {
             if(bigTextBox1.Text == "" || bigTextBox2.Text == "" || bigTextBox3.Text == "")
             {
-                MessageBox.Show("Поля не могут быть пустыми" + bigTextBox1.Text + bigTextBox2.Text + bigTextBox3.Text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Поля не могут быть пустыми", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            auth.WebAuth.RequestPostAsync("item", (req) =>
+            auth.WebAuth.RequestPatchAsync("api/item/"+id, (req) =>
             {
                 var item = req.GetJsonAsync<items.Item>().Result;
                 func(item);
-                return null;
             }, new
             {
-                id = id,
                 name = bigTextBox1.Text.Trim(),
                 productName = bigTextBox2.Text.Trim(),
                 serialNumber = bigTextBox3.Text.Trim()

@@ -12,8 +12,8 @@ namespace In_Client.Controls.User
 {
     public partial class newItemForm : Form
     {
-        Func<items.Item, object> func;
-        public newItemForm(Func<items.Item, object> func)
+        Action<items.Item> func;
+        public newItemForm(Action<items.Item> func)
         {
             InitializeComponent();
             this.func = func;
@@ -23,14 +23,13 @@ namespace In_Client.Controls.User
         {
             if(bigTextBox1.Text == "" || bigTextBox2.Text == "" || bigTextBox3.Text == "")
             {
-                MessageBox.Show("Поля не могут быть пустыми" + bigTextBox1.Text + bigTextBox2.Text + bigTextBox3.Text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Поля не могут быть пустыми", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            auth.WebAuth.RequestPostAsync("item", (req) =>
+            auth.WebAuth.RequestPostAsync("admin/item", (req) =>
             {
                 var item = req.GetJsonAsync<items.Item>().Result;
                 func(item);
-                return null;
             }, new
             {
 

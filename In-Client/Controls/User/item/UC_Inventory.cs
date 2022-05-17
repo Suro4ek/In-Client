@@ -12,10 +12,66 @@ namespace In_Client.Controls.User
 {
     public partial class UC_Inventory : UserControl
     {
-        public List<items.Item> items;
+        public List<items.Item>? items;
         public UC_Inventory()
         {
             InitializeComponent();
+            if (Program.localSettings.user.role != "admin")
+            {
+                nightButton5.Visible = true;
+                nightButton1.Visible = false;
+                nightButton2.Visible = false;
+                nightButton3.Visible = false;
+                nightButton4.Visible = false;
+            }
+        }
+
+        private void nightButton1_Click(object sender, EventArgs e)
+        {
+            newItemForm form = new newItemForm((item) =>
+            {
+                poisonDataGridView1.Rows.Add(item.ID, item.name, item.productName, item.serialNumber, "");
+            });
+            form.ShowDialog();
+        }
+
+        private void nightButton2_Click(object sender, EventArgs e)
+        {
+            int currentIndex = poisonDataGridView1.CurrentRow.Index;
+            if (poisonDataGridView1[0, currentIndex].Value != null)
+            {
+                int id = (int)poisonDataGridView1[0, currentIndex].Value;
+                string name = (string)poisonDataGridView1[1, currentIndex].Value;
+                string productName = (string)poisonDataGridView1[2, currentIndex].Value;
+                string serialNumber = (string)poisonDataGridView1[3, currentIndex].Value;
+                editItemForm form = new editItemForm(id, name, productName, serialNumber,
+                    (item) =>
+                    {
+                        poisonDataGridView1[0, currentIndex].Value = item.ID;
+                        poisonDataGridView1[1, currentIndex].Value = item.name;
+                        poisonDataGridView1[2, currentIndex].Value = item.productName;
+                        poisonDataGridView1[3, currentIndex].Value = item.serialNumber;
+                        poisonDataGridView1[4, currentIndex].Value = "нету";
+                    });
+                form.ShowDialog();
+            }
+        }
+
+        private void nightButton3_Click(object sender, EventArgs e)
+        {
+            int currentIndex = poisonDataGridView1.CurrentRow.Index;
+            if (poisonDataGridView1[0, currentIndex].Value != null)
+            {
+                int id = (int)poisonDataGridView1[0, currentIndex].Value;
+                auth.WebAuth.RequestDeleteAsync("item/" + id, (req) =>
+                {
+                    poisonDataGridView1.Rows.RemoveAt(currentIndex);
+                });
+            }
+        }
+
+        private void onLoad(object sender, EventArgs e)
+        {
             var column1 = new DataGridViewColumn();
             column1.HeaderText = "ID"; //текст в шапке
             column1.Width = 100; //ширина колонки
@@ -63,64 +119,81 @@ namespace In_Client.Controls.User
             poisonDataGridView1.Columns.Add(column4);
             poisonDataGridView1.Columns.Add(column5);
             poisonDataGridView1.AllowUserToAddRows = false;
-            auth.WebAuth.RequestGet("items", (res) =>
+            auth.WebAuth.RequestGet("api/items", (res) =>
             {
-                var stream = res.Content.ReadAsStream();
-                var items = System.Text.Json.JsonSerializer.Deserialize<List<items.Item>>(stream);
+                var items = res.GetJsonAsync<List<items.Item>>().Result;
                 this.items = items;
-                return null;
             });
-            foreach(var item in items)
+            foreach (var item in items)
             {
-                poisonDataGridView1.Rows.Add(item.ID, item.name, item.productName, item.serialNumber, "");
-            }
-
-        }
-
-        private void nightButton1_Click(object sender, EventArgs e)
-        {
-            newItemForm form = new newItemForm((item) =>
-            {
-                poisonDataGridView1.Rows.Add(item.ID, item.name, item.productName, item.serialNumber, "");
-                return null;
-            });
-            form.ShowDialog();
-        }
-
-        private void nightButton2_Click(object sender, EventArgs e)
-        {
-            int currentIndex = poisonDataGridView1.CurrentRow.Index;
-            if (poisonDataGridView1[0, currentIndex].Value != null)
-            {
-                int id = (int)poisonDataGridView1[0, currentIndex].Value;
-                string name = (string)poisonDataGridView1[1, currentIndex].Value;
-                string productName = (string)poisonDataGridView1[2, currentIndex].Value;
-                string serialNumber = (string)poisonDataGridView1[3, currentIndex].Value;
-                editItemForm form = new editItemForm(id, name, productName, serialNumber,
-                    (item) =>
-                    {
-                        poisonDataGridView1[0, currentIndex].Value = item.ID;
-                        poisonDataGridView1[1, currentIndex].Value = item.name;
-                        poisonDataGridView1[2, currentIndex].Value = item.productName;
-                        poisonDataGridView1[3, currentIndex].Value = item.serialNumber;
-                        return null;
-              });
-                form.ShowDialog();
-            }
-        }
-
-        private void nightButton3_Click(object sender, EventArgs e)
-        {
-            int currentIndex = poisonDataGridView1.CurrentRow.Index;
-            if (poisonDataGridView1[0, currentIndex].Value != null)
-            {
-                int id = (int)poisonDataGridView1[0, currentIndex].Value;
-                auth.WebAuth.RequestDeleteAsync("item/"+id, (req) =>
+                if (item.owner == null)
                 {
-                    poisonDataGridView1.Rows.RemoveAt(currentIndex);
-                    return null;
+                    poisonDataGridView1.Rows.Add(item.ID, item.name, item.productName, item.serialNumber, "нету");
+                }
+                else
+                {
+                    poisonDataGridView1.Rows.Add(item.ID, item.name, item.productName, item.serialNumber, item.owner.familia + " " + item.owner.name);
+                }
+            }
+        }
+
+        private void nightButton4_Click(object sender, EventArgs e)
+        {
+            int currentIndex = poisonDataGridView1.CurrentRow.Index;
+            if (poisonDataGridView1[0, currentIndex].Value != null)
+            {
+                item.SetOwner setOwner = new item.SetOwner(items[currentIndex].owner != null ? (int)items[currentIndex].owner.ID : 0,
+                    (int)poisonDataGridView1[0, currentIndex].Value, (item) =>
+                    {
+                        if (item.owner == null)
+                        {
+                            poisonDataGridView1[4, currentIndex].Value = "нету";
+                        }
+                        else
+                        {
+                            poisonDataGridView1[4, currentIndex].Value = item.owner.familia + " " + item.owner.name;
+                        }
+                    });
+                setOwner.ShowDialog();
+            }
+        }
+
+        private void nightButton5_Click(object sender, EventArgs e)
+        {
+            int currentIndex = poisonDataGridView1.CurrentRow.Index;
+            if (poisonDataGridView1[0, currentIndex].Value != null)
+            {
+                var itemId = (int)poisonDataGridView1[0, currentIndex].Value;
+                auth.WebAuth.RequestPatchAsync("api/item/" + itemId, (req) =>
+                {
+                    var item = req.GetJsonAsync<items.Item>().Result;
+                    poisonDataGridView1[4, currentIndex].Value = item.owner.familia + " " + item.owner.name;
+                }, new
+                {
+                    ownerid = Program.localSettings.user.ID
                 });
             }
+        }
+
+        private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //create Bitmap and add/draw datagridview to it 
+            Bitmap dataGridViewBitmap = new Bitmap(this.poisonDataGridView1.Width, this.poisonDataGridView1.Height);
+
+            poisonDataGridView1.DrawToBitmap(dataGridViewBitmap, new System.Drawing.Rectangle(0, 0, this.poisonDataGridView1.Width, this.poisonDataGridView1.Height));
+
+            e.Graphics.DrawImage(dataGridViewBitmap, 0, 0);
+        }
+
+        private void nightButton6_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog print = new PrintPreviewDialog();
+            System.Drawing.Printing.PrintDocument document = new System.Drawing.Printing.PrintDocument();
+            document.PrintPage +=
+        new System.Drawing.Printing.PrintPageEventHandler
+        (printDocument1_PrintPage_1);
+            print.Document = document;
+            print.ShowDialog();
         }
     }
 }

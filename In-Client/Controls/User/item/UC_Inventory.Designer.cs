@@ -32,17 +32,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.nightButton5 = new ReaLTaiizor.Controls.NightButton();
             this.nightButton4 = new ReaLTaiizor.Controls.NightButton();
             this.nightButton3 = new ReaLTaiizor.Controls.NightButton();
             this.nightButton2 = new ReaLTaiizor.Controls.NightButton();
             this.nightButton1 = new ReaLTaiizor.Controls.NightButton();
             this.poisonDataGridView1 = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.nightButton6 = new ReaLTaiizor.Controls.NightButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.nightButton6);
+            this.panel1.Controls.Add(this.nightButton5);
             this.panel1.Controls.Add(this.nightButton4);
             this.panel1.Controls.Add(this.nightButton3);
             this.panel1.Controls.Add(this.nightButton2);
@@ -52,6 +56,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(146, 470);
             this.panel1.TabIndex = 0;
+            // 
+            // nightButton5
+            // 
+            this.nightButton5.BackColor = System.Drawing.Color.Transparent;
+            this.nightButton5.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.nightButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nightButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton5.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton5.HoverForeColor = System.Drawing.Color.White;
+            this.nightButton5.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.nightButton5.Location = new System.Drawing.Point(-4, 180);
+            this.nightButton5.MinimumSize = new System.Drawing.Size(144, 47);
+            this.nightButton5.Name = "nightButton5";
+            this.nightButton5.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton5.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.nightButton5.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton5.PressedForeColor = System.Drawing.Color.White;
+            this.nightButton5.Radius = 20;
+            this.nightButton5.Size = new System.Drawing.Size(144, 66);
+            this.nightButton5.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.nightButton5.TabIndex = 4;
+            this.nightButton5.Text = "Взять";
+            this.nightButton5.Visible = false;
+            this.nightButton5.Click += new System.EventHandler(this.nightButton5_Click);
             // 
             // nightButton4
             // 
@@ -74,6 +102,7 @@
             this.nightButton4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.nightButton4.TabIndex = 3;
             this.nightButton4.Text = "Назначить";
+            this.nightButton4.Click += new System.EventHandler(this.nightButton4_Click);
             // 
             // nightButton3
             // 
@@ -189,6 +218,29 @@
             this.poisonDataGridView1.Size = new System.Drawing.Size(915, 470);
             this.poisonDataGridView1.TabIndex = 1;
             // 
+            // nightButton6
+            // 
+            this.nightButton6.BackColor = System.Drawing.Color.Transparent;
+            this.nightButton6.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.nightButton6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nightButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton6.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton6.HoverForeColor = System.Drawing.Color.White;
+            this.nightButton6.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.nightButton6.Location = new System.Drawing.Point(-4, 370);
+            this.nightButton6.MinimumSize = new System.Drawing.Size(144, 47);
+            this.nightButton6.Name = "nightButton6";
+            this.nightButton6.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton6.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.nightButton6.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.nightButton6.PressedForeColor = System.Drawing.SystemColors.Window;
+            this.nightButton6.Radius = 20;
+            this.nightButton6.Size = new System.Drawing.Size(144, 66);
+            this.nightButton6.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.nightButton6.TabIndex = 5;
+            this.nightButton6.Text = "Печать";
+            this.nightButton6.Click += new System.EventHandler(this.nightButton6_Click);
+            // 
             // UC_Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -197,6 +249,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UC_Inventory";
             this.Size = new System.Drawing.Size(1061, 470);
+            this.Load += new System.EventHandler(this.onLoad);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -211,5 +264,7 @@
         private ReaLTaiizor.Controls.NightButton nightButton3;
         private ReaLTaiizor.Controls.NightButton nightButton2;
         private ReaLTaiizor.Controls.NightButton nightButton1;
+        private ReaLTaiizor.Controls.NightButton nightButton5;
+        private ReaLTaiizor.Controls.NightButton nightButton6;
     }
 }

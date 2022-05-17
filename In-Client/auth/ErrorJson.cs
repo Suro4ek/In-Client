@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace In_Client.auth
 {
-    public class JWTJson
+    public class ErrorJson
     {
-        public int code { get; set; }
-        public string? token { get; set; }
-        public DateTime expire { get; set; }   
+        public int? code { get; set; }
+        public string? message { get; set; }
     }
 }

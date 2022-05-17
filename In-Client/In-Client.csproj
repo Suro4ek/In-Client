@@ -20,6 +20,12 @@
     <Compile Update="Controls\User\item\editItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Controls\User\user\editUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\User\user\newUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

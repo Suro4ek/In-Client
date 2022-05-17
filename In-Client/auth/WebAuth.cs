@@ -14,125 +14,129 @@ namespace In_Client.auth
     internal class WebAuth
     {
 
-        public static void RequestGet(string request, Func<HttpResponseMessage, object> successfull) 
+        public static void RequestGet(string request, Action<IFlurlResponse> successfull) 
         {
 
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.Timeout = TimeSpan.FromSeconds(1);
-                try
+                var url = new Url(Program.applicationSettings.ServerURL + request + "?token=" + Program.applicationSettings.JwtToken);
+                var result = url.AllowHttpStatus("400-404,6xx").GetAsync().Result;
+                if (result.StatusCode == 200)
                 {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Program.applicationSettings.JwtToken);
-                    HttpResponseMessage res;
-                    var webRequest = new HttpRequestMessage(HttpMethod.Get, Program.applicationSettings.ServerURL + "api/" + request);
-                    res = client.Send(webRequest);
-                    
-                    if (res.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        var stream = res.Content.ReadAsStream();
-                        var json = System.Text.Json.JsonSerializer.Deserialize<object>(stream);
-                        MessageBox.Show(json.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (res.StatusCode == HttpStatusCode.Unauthorized)
-                    {
-                        Program.onLogin();
-                    }
-                    else if (res.StatusCode == HttpStatusCode.OK)
-                    {
-                        successfull(res);
-                    }
+                    successfull(result);
                 }
-                catch (TaskCanceledException ex)
+                else if (result.StatusCode == 400)
                 {
-                    MessageBox.Show("Сервер не отвечает", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var json = result.GetJsonAsync();
+                    MessageBox.Show(json.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }else if(result.StatusCode == 401)
+                {
+                    Program.onLogin();
                 }
+            }
+            catch (AggregateException)
+            {
+                MessageBox.Show("sdsd", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public static async void RequestPostAsync(string request1, Func<IFlurlResponse,object> successfull, object vars) 
+        public static async void RequestNoAuthPostAsync(string request1, Action<IFlurlResponse> responce, object vars)
         {
             try
             {
-                var url = new Url(Program.applicationSettings.ServerURL + "api/" + request1 + "?token=" + Program.applicationSettings.JwtToken);
-                var test = await url.PostUrlEncodedAsync(vars);
-                if(test.StatusCode == 200)
-                {
-                    successfull(test);
-                }
-                
+                var url = new Url(Program.applicationSettings.ServerURL + request1);
+                var result = await url.PostUrlEncodedAsync(vars);
+                responce(result);
             }
-            catch(Exception e)
+            catch(FlurlHttpException ex)
+            {
+                if(ex.StatusCode == 401)
+                {
+                    var error = await ex.GetResponseJsonAsync<auth.ErrorJson>();
+                    if(error.message == "incorrect Username or Password")
+                    {
+                        MessageBox.Show("Неправильный логин или пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if(error.message == "missing Username or Password")
+                    {
+                        MessageBox.Show("Вы не ввели логин или пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка на стороне сервера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+
+        public static async void RequestPostAsync(string request1, Action<IFlurlResponse> responce, object vars) 
+        {
+            try
+            {
+                var url = new Url(Program.applicationSettings.ServerURL + request1 + "?token=" + Program.applicationSettings.JwtToken);
+                var result = await url.AllowHttpStatus("400-404,5xx,6xx").PostUrlEncodedAsync(vars);
+                responce(result);
+            }
+            catch(Exception)
             {
                 MessageBox.Show("Со стороны сервера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public static async void RequestDeleteAsync(string request1, Func<IFlurlResponse, object> successfull)
+        public static async void RequestDeleteAsync(string request1, Action<IFlurlResponse> responce)
         {
             try
             {
-                var url = new Url(Program.applicationSettings.ServerURL + "api/" + request1 + "?token=" + Program.applicationSettings.JwtToken);
-                var test = await url.DeleteAsync();
-                if (test.StatusCode == 200)
-                {
-                    successfull(test);
-                }
+                var url = new Url(Program.applicationSettings.ServerURL + request1 + "?token=" + Program.applicationSettings.JwtToken);
+                var result = await url.DeleteAsync();
+                responce(result);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Со стороны сервера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        public static async void RequestPatchAsync(string request1, Action<IFlurlResponse> successfull, object vars)
+        {
+            try
+            {
+                var url = new Url(Program.applicationSettings.ServerURL + request1 + "?token=" + Program.applicationSettings.JwtToken);
+                var responce = await url.PatchJsonAsync(vars);
+                successfull(responce);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Со стороны сервера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static async void RequestGetAsync(string request, Action<IFlurlResponse> successfull)
+        {
+            try
+            {
+                var url = new Url(Program.applicationSettings.ServerURL + request + "?token=" + Program.applicationSettings.JwtToken);
+                var result = await url.GetAsync();
+                if (result.StatusCode == 200)
+                {
+                    successfull(result);
+                }
+                else if (result.StatusCode == 400)
+                {
+                    var json = result.GetJsonAsync();
+                    MessageBox.Show(json.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (result.StatusCode == 401)
+                {
+                    Program.onLogin();
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Со стороны сервера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public static async void RequestPatchAsync(string request1, Func<IFlurlResponse, object> successfull, object vars)
-        {
-            try
-            {
-                var url = new Url(Program.applicationSettings.ServerURL + "api/" + request1 + "?token=" + Program.applicationSettings.JwtToken);
-                var test = await url.PatchJsonAsync(vars);
-                if (test.StatusCode == 200)
-                {
-                    successfull(test);
-                }
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Со стороны сервера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public static async void RequestGetAsync(string request,Func<HttpResponseMessage, object> successfull)
-        {
-
-            using (HttpClient client = new HttpClient())
-            {
-                client.Timeout = TimeSpan.FromSeconds(1);
-                try
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Program.applicationSettings.JwtToken);
-                    var res = await client.GetAsync(Program.applicationSettings.ServerURL + "api/" + request);
-
-                    if (res.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        var stream = res.Content.ReadAsStream();
-                        var json = System.Text.Json.JsonSerializer.Deserialize<object>(stream);
-                        MessageBox.Show(json.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (res.StatusCode == HttpStatusCode.Unauthorized)
-                    {
-                        Program.onLogin();
-                    }
-                    else if (res.StatusCode == HttpStatusCode.OK)
-                    {
-                        successfull(res);
-                    }
-                }
-                catch (TaskCanceledException ex)
-                {
-                    MessageBox.Show("Сервер не отвечает", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
         }
     }
