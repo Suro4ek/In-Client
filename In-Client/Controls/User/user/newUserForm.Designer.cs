@@ -101,11 +101,11 @@
             // 
             this.bigLabel1.AutoSize = true;
             this.bigLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.bigLabel1.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bigLabel1.Font = new System.Drawing.Font("Impact", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bigLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
-            this.bigLabel1.Location = new System.Drawing.Point(3, 18);
+            this.bigLabel1.Location = new System.Drawing.Point(18, 23);
             this.bigLabel1.Name = "bigLabel1";
-            this.bigLabel1.Size = new System.Drawing.Size(347, 46);
+            this.bigLabel1.Size = new System.Drawing.Size(326, 41);
             this.bigLabel1.TabIndex = 9;
             this.bigLabel1.Text = "Новый пользователь";
             // 
@@ -150,6 +150,7 @@
             this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.textBox3.Location = new System.Drawing.Point(18, 430);
             this.textBox3.Name = "textBox3";
+            this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(315, 36);
             this.textBox3.TabIndex = 17;
             // 

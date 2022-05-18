@@ -28,11 +28,6 @@ namespace In_Client.Controls.User
 
         private void foxButton1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "")
-            {
-                MessageBox.Show("Поля не могут быть пустыми", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             auth.WebAuth.RequestPatchAsync("api/item/"+id, (req) =>
             {
                 var item = req.GetJsonAsync<items.Item>().Result;

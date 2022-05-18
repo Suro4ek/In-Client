@@ -53,11 +53,6 @@ namespace In_Client.Controls.User.user
 
         private void foxButton1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" )
-            {
-                MessageBox.Show("Поля не могут быть пустыми", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             auth.WebAuth.RequestPatchAsync("admin/user/"+ userId, (req) =>
             {
                 if(req.StatusCode == 500)

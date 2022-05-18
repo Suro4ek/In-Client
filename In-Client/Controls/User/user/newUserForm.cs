@@ -30,7 +30,7 @@ namespace In_Client.Controls.User.user
             }
             auth.WebAuth.RequestPostAsync("admin/register", (req) =>
             {
-                if(req.StatusCode == 500)
+                if(req.StatusCode == 500 || req.StatusCode == 401)
                 {
                     var error = req.GetJsonAsync<auth.ErrorJson>().Result;
                     if(error.message == "error user is duplicate") {

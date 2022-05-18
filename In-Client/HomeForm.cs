@@ -14,6 +14,7 @@ namespace In_Client
     {
         bool mouseDown;
         private Point offset;
+        bool hide = false;
         public HomeForm()
         {
             InitializeComponent();
@@ -98,12 +99,40 @@ namespace In_Client
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Normal;
+            Hide();
+            hide = true;
+            показатьToolStripMenuItem.Text = "Показать";
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+
+            if (WindowState.Equals(FormWindowState.Maximized))
+            {
+                WindowState = FormWindowState.Normal;
+                iconButton2.IconChar = FontAwesome.Sharp.IconChar.Square;
+            }
+            else
+            {
+                WindowState = FormWindowState.Maximized;
+                iconButton2.IconChar = FontAwesome.Sharp.IconChar.Squarespace;
+            }
+        }
+
+        private void ShowHide(object sender, EventArgs e)
+        {
+            if (hide)
+            {
+                hide = false;
+                Show();
+                показатьToolStripMenuItem.Text = "Скрыть";
+            }
+            else
+            {
+                hide = true;
+                Hide();
+                показатьToolStripMenuItem.Text = "Показать";
+            }
         }
     } 
 }

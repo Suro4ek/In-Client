@@ -104,5 +104,15 @@ namespace In_Client
         {
             mouseDown = false;
         }
+
+        private void iconButton2_MouseDown(object sender, MouseEventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = false;
+        }
+
+        private void iconButton2_MouseUp(object sender, MouseEventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = true;
+        }
     }
 }

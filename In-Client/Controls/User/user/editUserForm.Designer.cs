@@ -88,11 +88,11 @@
             // 
             this.bigLabel1.AutoSize = true;
             this.bigLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.bigLabel1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bigLabel1.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bigLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
-            this.bigLabel1.Location = new System.Drawing.Point(6, 24);
+            this.bigLabel1.Location = new System.Drawing.Point(12, 28);
             this.bigLabel1.Name = "bigLabel1";
-            this.bigLabel1.Size = new System.Drawing.Size(357, 40);
+            this.bigLabel1.Size = new System.Drawing.Size(341, 36);
             this.bigLabel1.TabIndex = 9;
             this.bigLabel1.Text = "Изменение пользователя";
             // 
@@ -139,6 +139,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(299, 36);
             this.textBox3.TabIndex = 16;
+            this.textBox3.UseSystemPasswordChar = true;
             // 
             // panel1
             // 

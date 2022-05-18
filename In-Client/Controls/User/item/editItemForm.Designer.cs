@@ -101,11 +101,11 @@
             // 
             this.bigLabel1.AutoSize = true;
             this.bigLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.bigLabel1.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bigLabel1.Font = new System.Drawing.Font("Impact", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bigLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
-            this.bigLabel1.Location = new System.Drawing.Point(24, 9);
+            this.bigLabel1.Location = new System.Drawing.Point(36, 23);
             this.bigLabel1.Name = "bigLabel1";
-            this.bigLabel1.Size = new System.Drawing.Size(313, 46);
+            this.bigLabel1.Size = new System.Drawing.Size(286, 41);
             this.bigLabel1.TabIndex = 9;
             this.bigLabel1.Text = "Изменение товара";
             // 

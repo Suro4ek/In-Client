@@ -16,13 +16,13 @@ namespace In_Client.Controls.User
         public UC_Inventory()
         {
             InitializeComponent();
+            iconButton5.Visible = false;
             if (Program.localSettings.user.role != "admin")
             {
-                iconButton1.Visible = true;
+                iconButton1.Visible = false;
                 iconButton2.Visible = false;
                 iconButton3.Visible = false;
                 iconButton4.Visible = false;
-                iconButton5.Visible = false;
             }
         }
 
@@ -92,7 +92,6 @@ namespace In_Client.Controls.User
                         poisonDataGridView1[1, currentIndex].Value = item.name;
                         poisonDataGridView1[2, currentIndex].Value = item.productName;
                         poisonDataGridView1[3, currentIndex].Value = item.serialNumber;
-                        poisonDataGridView1[4, currentIndex].Value = "нету";
                     });
                 form.ShowDialog();
             }
@@ -157,5 +156,7 @@ namespace In_Client.Controls.User
             print.Document = document;
             print.ShowDialog();
         }
+
+
     }
 }

@@ -56,8 +56,16 @@ namespace In_Client.auth
             try
             {
                 var url = new Url(Program.applicationSettings.ServerURL + request1);
-                var result = await url.PostUrlEncodedAsync(vars);
+                var result = await url.WithTimeout(1).PostUrlEncodedAsync(vars);
                 responce(result);
+            }
+            catch(FlurlHttpTimeoutException)
+            {
+                var result = MessageBox.Show("Соединение с сервером провалена, не желаете поменять сервер?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    Program.setupServer();
+                }
             }
             catch(FlurlHttpException ex)
             {
@@ -87,8 +95,15 @@ namespace In_Client.auth
             try
             {
                 var url = new Url(Program.applicationSettings.ServerURL + request1 + "?token=" + Program.applicationSettings.JwtToken);
-                var result = await url.AllowHttpStatus("400-404,5xx,6xx").PostUrlEncodedAsync(vars);
+                var result = await url.WithTimeout(1).AllowHttpStatus("400-404,5xx,6xx").PostUrlEncodedAsync(vars);
                 responce(result);
+            }catch(FlurlHttpTimeoutException)
+            {
+                var result = MessageBox.Show("Соединение с сервером провалена, не желаете поменять сервер?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    Program.setupServer();
+                }
             }
             catch(Exception)
             {
@@ -101,8 +116,15 @@ namespace In_Client.auth
             try
             {
                 var url = new Url(Program.applicationSettings.ServerURL + request1 + "?token=" + Program.applicationSettings.JwtToken);
-                var result = await url.DeleteAsync();
+                var result = await url.WithTimeout(1).DeleteAsync();
                 responce(result);
+            }catch (FlurlHttpTimeoutException)
+            {
+                var result = MessageBox.Show("Соединение с сервером провалена, не желаете поменять сервер?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    Program.setupServer();
+                }
             }
             catch (Exception)
             {
@@ -115,9 +137,17 @@ namespace In_Client.auth
             try
             {
                 var url = new Url(Program.applicationSettings.ServerURL + request1 + "?token=" + Program.applicationSettings.JwtToken);
-                var responce = await url.PatchJsonAsync(vars);
+                var responce = await url.WithTimeout(1).PatchJsonAsync(vars);
                 successfull(responce);
 
+            }
+            catch (FlurlHttpTimeoutException)
+            {
+                var result = MessageBox.Show("Соединение с сервером провалена, не желаете поменять сервер?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    Program.setupServer();
+                }
             }
             catch (Exception)
             {
@@ -130,7 +160,7 @@ namespace In_Client.auth
             try
             {
                 var url = new Url(Program.applicationSettings.ServerURL + request + "?token=" + Program.applicationSettings.JwtToken);
-                var result = await url.GetAsync();
+                var result = await url.WithTimeout(1).GetAsync();
                 if (result.StatusCode == 200)
                 {
                     successfull(result);
@@ -143,6 +173,13 @@ namespace In_Client.auth
                 else if (result.StatusCode == 401)
                 {
                     Program.onLogin();
+                }
+            }catch (FlurlHttpTimeoutException)
+            {
+                var result = MessageBox.Show("Соединение с сервером провалена, не желаете поменять сервер?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    Program.setupServer();
                 }
             }
             catch (Exception e)
