@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace In_Client.auth
             try
             {
                 var url = new Url(Program.applicationSettings.ServerURL + request + "?token=" + Program.applicationSettings.JwtToken);
-                var result = url.AllowHttpStatus("400-404,6xx").GetAsync().Result;
+                var result = url.AllowHttpStatus("400-404,6xx").WithTimeout(1).GetAsync().GetAwaiter().GetResult();
                 if (result.StatusCode == 200)
                 {
                     successfull(result);
@@ -34,9 +35,19 @@ namespace In_Client.auth
                     Program.onLogin();
                 }
             }
-            catch (AggregateException)
+            catch (Exception ex)
             {
-                MessageBox.Show("sdsd", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(ex is FlurlHttpTimeoutException)
+                {
+                    var result = MessageBox.Show("Соединение с сервером провалена, не желаете поменять сервер?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    if(result == DialogResult.Yes)
+                    {
+                        Program.setupServer();
+                    }
+                }else
+                {
+                    MessageBox.Show("Обратитесь к системному администратору", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

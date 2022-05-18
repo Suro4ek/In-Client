@@ -13,6 +13,8 @@ namespace In_Client.Controls.User
     public partial class newItemForm : Form
     {
         Action<items.Item> func;
+        bool mouseDown;
+        private Point offset;
         public newItemForm(Action<items.Item> func)
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace In_Client.Controls.User
 
         private void foxButton1_Click(object sender, EventArgs e)
         {
-            if(bigTextBox1.Text == "" || bigTextBox2.Text == "" || bigTextBox3.Text == "")
+            if(textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "")
             {
                 MessageBox.Show("Поля не могут быть пустыми", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -33,11 +35,36 @@ namespace In_Client.Controls.User
             }, new
             {
 
-                name = bigTextBox1.Text.Trim(),
-                productName = bigTextBox2.Text.Trim(),
-                serialNumber = bigTextBox3.Text.Trim()
+                name = textBox1.Text.Trim(),
+                productName = textBox2.Text.Trim(),
+                serialNumber = textBox3.Text.Trim()
             }) ;
         }
 
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mouseDown = true;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
     }
 }

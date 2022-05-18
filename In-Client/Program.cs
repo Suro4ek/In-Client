@@ -49,5 +49,29 @@ namespace In_Client
 
         }
 
+        public static void setupServer()
+        {
+            InputForm inputForm = new InputForm();
+            inputForm.Controls.Add(inputForm.addLabel("¬ведите адресс сервера"));
+            TextBox textBox = inputForm.addTextBox();
+            textBox.Text = applicationSettings.ServerURL;
+            inputForm.Controls.Add(textBox);
+            inputForm.button.Text = "—охранить";
+            inputForm.button.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                string textboxString = textBox.Text;
+                if (textboxString == "" || !Uri.IsWellFormedUriString(textboxString, UriKind.Absolute))
+                {
+                    MessageBox.Show("¬ведите корректный адресс", "ќшибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                applicationSettings.ServerURL = textboxString;
+                applicationSettings.Save();
+                inputForm.Close();
+            });
+
+            inputForm.ShowDialog();
+        }
+
     }
 }

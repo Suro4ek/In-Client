@@ -7,13 +7,18 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>3592847-general-office-repair-repair-tool-screwdriver-tools-wrench_107766.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="3592847-general-office-repair-repair-tool-screwdriver-tools-wrench_107766.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Flurl" Version="3.0.5" />
     <PackageReference Include="Flurl.Http" Version="3.2.3" />
+    <PackageReference Include="FontAwesome.Sharp.Pro" Version="5.15.4" />
     <PackageReference Include="ReaLTaiizor" Version="3.7.8.6" />
-    <PackageReference Include="RestSharp" Version="107.3.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,6 +12,8 @@ namespace In_Client
 {
     public partial class HomeForm : Form
     {
+        bool mouseDown;
+        private Point offset;
         public HomeForm()
         {
             InitializeComponent();
@@ -26,7 +28,8 @@ namespace In_Client
             }
             if(Program.localSettings.user.role != "admin")
             {
-                panel2.Visible = false;
+                metroButton2.Visible = false;
+                metroButton3.Visible = false;
             }
             Controls.User.UC_Inventory inventory = new Controls.User.UC_Inventory();
             addUserControl(inventory);
@@ -47,24 +50,60 @@ namespace In_Client
             Close();
         }
 
-
-        private void airButton1_Click(object sender, EventArgs e)
-        {
-            Controls.User.UC_Inventory inventory = new Controls.User.UC_Inventory();
-            addUserControl(inventory);
-        }
-
-        private void airButton2_Click(object sender, EventArgs e)
-        {
-            Controls.User.user.UC_Users users = new Controls.User.user.UC_Users();
-            addUserControl(users);
-        }
-
         private void metroButton1_Click(object sender, EventArgs e)
         {
             Program.applicationSettings.JwtToken = "";
             Program.applicationSettings.Save();
             Close();
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            Controls.User.UC_Inventory inventory = new Controls.User.UC_Inventory();
+            addUserControl(inventory);
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            Controls.User.user.UC_Users users = new Controls.User.user.UC_Users();
+            addUserControl(users);
+        }
+
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mouseDown = true;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
         }
     } 
 }

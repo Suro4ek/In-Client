@@ -13,6 +13,8 @@ namespace In_Client.Controls.User.user
     public partial class newUserForm : Form
     {
         Action<auth.User> func;
+        bool mouseDown;
+        private Point offset;
         public newUserForm(Action<auth.User> func)
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace In_Client.Controls.User.user
 
         private void foxButton1_Click(object sender, EventArgs e)
         {
-            if(bigTextBox1.Text == "" || bigTextBox2.Text == "" || bigTextBox3.Text == "" || bigTextBox4.Text == "" )
+            if(textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" )
             {
                 MessageBox.Show("Поля не могут быть пустыми", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -44,17 +46,43 @@ namespace In_Client.Controls.User.user
                             "Паоль должно содеражать больше 5 символов", 
                             "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    return;
                 }
                 var user = req.GetJsonAsync<auth.User>().Result;
                 func(user);
             }, new
             {
-                familia = bigTextBox1.Text.Trim(),
-                name = bigTextBox2.Text.Trim(),
-                username = bigTextBox3.Text.Trim(),
-                password = bigTextBox4.Text.Trim()
+                familia = textBox1.Text.Trim(),
+                name = textBox2.Text.Trim(),
+                username = textBox4.Text.Trim(),
+                password = textBox3.Text.Trim()
             }) ;
         }
 
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mouseDown = true;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
     }
 }

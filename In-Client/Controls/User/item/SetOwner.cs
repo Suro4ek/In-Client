@@ -17,6 +17,8 @@ namespace In_Client.Controls.User.item
         public List<auth.User> users;
         public int itemId;
         public Action<items.Item> func;
+        bool mouseDown;
+        private Point offset;
         public SetOwner(int userId, int itemId, Action<items.Item> func)
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace In_Client.Controls.User.item
             {
                 ownerid = users[hopeComboBox1.SelectedIndex].ID
             });
+            Close();
         }
 
         private void SetOwner_Load(object sender, EventArgs e)
@@ -70,6 +73,33 @@ namespace In_Client.Controls.User.item
             {
                 ownerid = -1
             });
+            Close();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mouseDown = true;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

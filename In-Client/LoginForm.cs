@@ -6,6 +6,8 @@ namespace In_Client
     public partial class LoginForm : Form
     {
         public ApplicationSettings application;
+        bool mouseDown;
+        private Point offset;
         public LoginForm(ApplicationSettings applicationSettings)
         {
             InitializeComponent();
@@ -47,26 +49,7 @@ namespace In_Client
 
         private void setupServerString(object sender, EventArgs e)
         {
-            InputForm inputForm = new InputForm();
-            inputForm.Controls.Add(inputForm.addLabel("Введите адресс сервера"));
-            TextBox textBox = inputForm.addTextBox();
-            textBox.Text = application.ServerURL;
-            inputForm.Controls.Add(textBox);
-            inputForm.button.Text = "Сохранить";
-            inputForm.button.Click += new EventHandler((object sender, EventArgs e) =>
-            {
-                string textboxString =  textBox.Text;
-                if (textboxString == "" || !Uri.IsWellFormedUriString(textboxString, UriKind.Absolute))
-                {
-                    MessageBox.Show("Введите корректный адресс", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                application.ServerURL = textboxString;
-                application.Save();
-                inputForm.Close();
-            });
-
-            inputForm.ShowDialog();
+            Program.setupServer();
         }
 
         private void Close(object sender, EventArgs e)
@@ -81,19 +64,45 @@ namespace In_Client
 
         private void hopeButton1_Click(object sender, EventArgs e)
         {
-            if (bigTextBox1.Text == "")
+            if (textBox1.Text == "")
             {
                 MessageBox.Show("Вы не ввели имя пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bigTextBox1.Focus();
+                textBox1.Focus();
                 return;
             }
-            if (bigTextBox2.Text == "")
+            if (textBox2.Text == "")
             {
                 MessageBox.Show("Вы не ввели пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bigTextBox2.Focus();
+                textBox2.Focus();
                 return;
             }
-            Login(bigTextBox1.Text.Trim(), bigTextBox2.Text.Trim());
+            Login(textBox1.Text.Trim(), textBox2.Text.Trim());
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void mouseMove_event(object sender, MouseEventArgs e)
+        {
+            if(mouseDown)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
+            }
+        }
+
+        private void mouseDown_event(object sender, MouseEventArgs e)
+        {
+            offset.X = e.X;
+            offset.Y = e.Y;
+            mouseDown = true;
+        }
+
+        private void mouseUp_event(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

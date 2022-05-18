@@ -31,240 +31,294 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.nightButton5 = new ReaLTaiizor.Controls.NightButton();
-            this.nightButton4 = new ReaLTaiizor.Controls.NightButton();
-            this.nightButton3 = new ReaLTaiizor.Controls.NightButton();
-            this.nightButton2 = new ReaLTaiizor.Controls.NightButton();
-            this.nightButton1 = new ReaLTaiizor.Controls.NightButton();
             this.poisonDataGridView1 = new ReaLTaiizor.Controls.PoisonDataGridView();
-            this.nightButton6 = new ReaLTaiizor.Controls.NightButton();
-            this.panel1.SuspendLayout();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.nightButton6);
-            this.panel1.Controls.Add(this.nightButton5);
-            this.panel1.Controls.Add(this.nightButton4);
-            this.panel1.Controls.Add(this.nightButton3);
-            this.panel1.Controls.Add(this.nightButton2);
-            this.panel1.Controls.Add(this.nightButton1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(146, 470);
-            this.panel1.TabIndex = 0;
-            // 
-            // nightButton5
-            // 
-            this.nightButton5.BackColor = System.Drawing.Color.Transparent;
-            this.nightButton5.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.nightButton5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nightButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton5.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton5.HoverForeColor = System.Drawing.Color.White;
-            this.nightButton5.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.nightButton5.Location = new System.Drawing.Point(-4, 180);
-            this.nightButton5.MinimumSize = new System.Drawing.Size(144, 47);
-            this.nightButton5.Name = "nightButton5";
-            this.nightButton5.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton5.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.nightButton5.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton5.PressedForeColor = System.Drawing.Color.White;
-            this.nightButton5.Radius = 20;
-            this.nightButton5.Size = new System.Drawing.Size(144, 66);
-            this.nightButton5.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.nightButton5.TabIndex = 4;
-            this.nightButton5.Text = "Взять";
-            this.nightButton5.Visible = false;
-            this.nightButton5.Click += new System.EventHandler(this.nightButton5_Click);
-            // 
-            // nightButton4
-            // 
-            this.nightButton4.BackColor = System.Drawing.Color.Transparent;
-            this.nightButton4.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.nightButton4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nightButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton4.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton4.HoverForeColor = System.Drawing.Color.White;
-            this.nightButton4.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.nightButton4.Location = new System.Drawing.Point(-4, 298);
-            this.nightButton4.MinimumSize = new System.Drawing.Size(144, 47);
-            this.nightButton4.Name = "nightButton4";
-            this.nightButton4.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton4.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.nightButton4.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton4.PressedForeColor = System.Drawing.Color.White;
-            this.nightButton4.Radius = 20;
-            this.nightButton4.Size = new System.Drawing.Size(144, 66);
-            this.nightButton4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.nightButton4.TabIndex = 3;
-            this.nightButton4.Text = "Назначить";
-            this.nightButton4.Click += new System.EventHandler(this.nightButton4_Click);
-            // 
-            // nightButton3
-            // 
-            this.nightButton3.BackColor = System.Drawing.Color.Transparent;
-            this.nightButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.nightButton3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nightButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton3.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton3.HoverForeColor = System.Drawing.Color.White;
-            this.nightButton3.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.nightButton3.Location = new System.Drawing.Point(-4, 226);
-            this.nightButton3.MinimumSize = new System.Drawing.Size(144, 47);
-            this.nightButton3.Name = "nightButton3";
-            this.nightButton3.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.nightButton3.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton3.PressedForeColor = System.Drawing.Color.White;
-            this.nightButton3.Radius = 20;
-            this.nightButton3.Size = new System.Drawing.Size(144, 66);
-            this.nightButton3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.nightButton3.TabIndex = 2;
-            this.nightButton3.Text = "Удалить";
-            this.nightButton3.Click += new System.EventHandler(this.nightButton3_Click);
-            // 
-            // nightButton2
-            // 
-            this.nightButton2.BackColor = System.Drawing.Color.Transparent;
-            this.nightButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.nightButton2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nightButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton2.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton2.HoverForeColor = System.Drawing.Color.White;
-            this.nightButton2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.nightButton2.Location = new System.Drawing.Point(-4, 154);
-            this.nightButton2.MinimumSize = new System.Drawing.Size(144, 47);
-            this.nightButton2.Name = "nightButton2";
-            this.nightButton2.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.nightButton2.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton2.PressedForeColor = System.Drawing.Color.White;
-            this.nightButton2.Radius = 20;
-            this.nightButton2.Size = new System.Drawing.Size(144, 66);
-            this.nightButton2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.nightButton2.TabIndex = 1;
-            this.nightButton2.Text = "Изменить";
-            this.nightButton2.Click += new System.EventHandler(this.nightButton2_Click);
-            // 
-            // nightButton1
-            // 
-            this.nightButton1.BackColor = System.Drawing.Color.Transparent;
-            this.nightButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.nightButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nightButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton1.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton1.HoverForeColor = System.Drawing.Color.White;
-            this.nightButton1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.nightButton1.Location = new System.Drawing.Point(-4, 82);
-            this.nightButton1.MinimumSize = new System.Drawing.Size(144, 47);
-            this.nightButton1.Name = "nightButton1";
-            this.nightButton1.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.nightButton1.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton1.PressedForeColor = System.Drawing.Color.White;
-            this.nightButton1.Radius = 20;
-            this.nightButton1.Size = new System.Drawing.Size(144, 66);
-            this.nightButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.nightButton1.TabIndex = 0;
-            this.nightButton1.Text = "Добавить";
-            this.nightButton1.Click += new System.EventHandler(this.nightButton1_Click);
             // 
             // poisonDataGridView1
             // 
+            this.poisonDataGridView1.AllowUserToAddRows = false;
+            this.poisonDataGridView1.AllowUserToDeleteRows = false;
             this.poisonDataGridView1.AllowUserToResizeRows = false;
-            this.poisonDataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.poisonDataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.poisonDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.poisonDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.poisonDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.poisonDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.poisonDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.poisonDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.name,
+            this.nameProduct,
+            this.serialNumber,
+            this.owner});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.poisonDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.poisonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.poisonDataGridView1.EnableHeadersVisualStyles = false;
             this.poisonDataGridView1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.poisonDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.poisonDataGridView1.Location = new System.Drawing.Point(146, 0);
+            this.poisonDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.poisonDataGridView1.Location = new System.Drawing.Point(0, 0);
             this.poisonDataGridView1.Name = "poisonDataGridView1";
+            this.poisonDataGridView1.ReadOnly = true;
             this.poisonDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.poisonDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.poisonDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.poisonDataGridView1.RowTemplate.Height = 25;
             this.poisonDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.poisonDataGridView1.Size = new System.Drawing.Size(915, 470);
+            this.poisonDataGridView1.Size = new System.Drawing.Size(1061, 470);
             this.poisonDataGridView1.TabIndex = 1;
             // 
-            // nightButton6
+            // id
             // 
-            this.nightButton6.BackColor = System.Drawing.Color.Transparent;
-            this.nightButton6.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.nightButton6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nightButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton6.HoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton6.HoverForeColor = System.Drawing.Color.White;
-            this.nightButton6.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.nightButton6.Location = new System.Drawing.Point(-4, 370);
-            this.nightButton6.MinimumSize = new System.Drawing.Size(144, 47);
-            this.nightButton6.Name = "nightButton6";
-            this.nightButton6.NormalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton6.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.nightButton6.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.nightButton6.PressedForeColor = System.Drawing.SystemColors.Window;
-            this.nightButton6.Radius = 20;
-            this.nightButton6.Size = new System.Drawing.Size(144, 66);
-            this.nightButton6.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.nightButton6.TabIndex = 5;
-            this.nightButton6.Text = "Печать";
-            this.nightButton6.Click += new System.EventHandler(this.nightButton6_Click);
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Название";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // nameProduct
+            // 
+            this.nameProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameProduct.HeaderText = "Название продукта";
+            this.nameProduct.Name = "nameProduct";
+            this.nameProduct.ReadOnly = true;
+            // 
+            // serialNumber
+            // 
+            this.serialNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.serialNumber.HeaderText = "Серийный номер";
+            this.serialNumber.Name = "serialNumber";
+            this.serialNumber.ReadOnly = true;
+            // 
+            // owner
+            // 
+            this.owner.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.owner.HeaderText = "Владелец";
+            this.owner.Name = "owner";
+            this.owner.ReadOnly = true;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iconButton1.AutoSize = true;
+            this.iconButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 36;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton1.Location = new System.Drawing.Point(376, 1);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(42, 42);
+            this.iconButton1.TabIndex = 6;
+            this.iconButton1.TabStop = false;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iconButton2.AutoSize = true;
+            this.iconButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 36;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton2.Location = new System.Drawing.Point(437, 1);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(0);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton2.Size = new System.Drawing.Size(42, 42);
+            this.iconButton2.TabIndex = 7;
+            this.iconButton2.TabStop = false;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iconButton3.AutoSize = true;
+            this.iconButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 36;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton3.Location = new System.Drawing.Point(498, 1);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(0);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton3.Size = new System.Drawing.Size(42, 42);
+            this.iconButton3.TabIndex = 8;
+            this.iconButton3.TabStop = false;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iconButton4.AutoSize = true;
+            this.iconButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton4.IconSize = 36;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton4.Location = new System.Drawing.Point(559, 1);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(0);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton4.Size = new System.Drawing.Size(42, 42);
+            this.iconButton4.TabIndex = 9;
+            this.iconButton4.TabStop = false;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
+            // 
+            // iconButton5
+            // 
+            this.iconButton5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iconButton5.AutoSize = true;
+            this.iconButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton5.FlatAppearance.BorderSize = 0;
+            this.iconButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.iconButton5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton5.IconSize = 36;
+            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton5.Location = new System.Drawing.Point(620, 1);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(0);
+            this.iconButton5.Name = "iconButton5";
+            this.iconButton5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton5.Size = new System.Drawing.Size(42, 42);
+            this.iconButton5.TabIndex = 10;
+            this.iconButton5.TabStop = false;
+            this.iconButton5.UseVisualStyleBackColor = false;
+            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.panel1.Controls.Add(this.iconButton5);
+            this.panel1.Controls.Add(this.iconButton4);
+            this.panel1.Controls.Add(this.iconButton3);
+            this.panel1.Controls.Add(this.iconButton2);
+            this.panel1.Controls.Add(this.iconButton1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 427);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1061, 43);
+            this.panel1.TabIndex = 11;
             // 
             // UC_Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.poisonDataGridView1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.poisonDataGridView1);
             this.Name = "UC_Inventory";
             this.Size = new System.Drawing.Size(1061, 470);
             this.Load += new System.EventHandler(this.onLoad);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Panel panel1;
         private ReaLTaiizor.Controls.PoisonDataGridView poisonDataGridView1;
-        private ReaLTaiizor.Controls.NightButton nightButton4;
-        private ReaLTaiizor.Controls.NightButton nightButton3;
-        private ReaLTaiizor.Controls.NightButton nightButton2;
-        private ReaLTaiizor.Controls.NightButton nightButton1;
-        private ReaLTaiizor.Controls.NightButton nightButton5;
-        private ReaLTaiizor.Controls.NightButton nightButton6;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn name;
+        private DataGridViewTextBoxColumn nameProduct;
+        private DataGridViewTextBoxColumn serialNumber;
+        private DataGridViewTextBoxColumn owner;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton iconButton5;
+        private Panel panel1;
     }
 }
