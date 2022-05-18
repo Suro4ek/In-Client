@@ -23,6 +23,7 @@ namespace In_Client.Controls.User
                 iconButton2.Visible = false;
                 iconButton3.Visible = false;
                 iconButton4.Visible = false;
+                iconButton6.Visible = true;
             }
         }
 
@@ -47,24 +48,6 @@ namespace In_Client.Controls.User
             }
         }
 
-
-
-        private void nightButton5_Click(object sender, EventArgs e)
-        {
-            int currentIndex = poisonDataGridView1.CurrentRow.Index;
-            if (poisonDataGridView1[0, currentIndex].Value != null)
-            {
-                var itemId = (int)poisonDataGridView1[0, currentIndex].Value;
-                auth.WebAuth.RequestPatchAsync("api/item/" + itemId, (req) =>
-                {
-                    var item = req.GetJsonAsync<items.Item>().Result;
-                    poisonDataGridView1[4, currentIndex].Value = item.owner.familia + " " + item.owner.name;
-                }, new
-                {
-                    ownerid = Program.localSettings.user.ID
-                });
-            }
-        }
 
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -157,6 +140,21 @@ namespace In_Client.Controls.User
             print.ShowDialog();
         }
 
-
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            int currentIndex = poisonDataGridView1.CurrentRow.Index;
+            if (poisonDataGridView1[0, currentIndex].Value != null)
+            {
+                var itemId = (int)poisonDataGridView1[0, currentIndex].Value;
+                auth.WebAuth.RequestPatchAsync("api/item/" + itemId, (req) =>
+                {
+                    var item = req.GetJsonAsync<items.Item>().Result;
+                    poisonDataGridView1[4, currentIndex].Value = item.owner.familia + " " + item.owner.name;
+                }, new
+                {
+                    ownerid = Program.localSettings.user.ID
+                });
+            }
+        }
     }
 }

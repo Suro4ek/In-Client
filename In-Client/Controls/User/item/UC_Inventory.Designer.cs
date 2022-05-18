@@ -43,6 +43,7 @@
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.poisonDataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -279,6 +280,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.panel1.Controls.Add(this.iconButton6);
             this.panel1.Controls.Add(this.iconButton5);
             this.panel1.Controls.Add(this.iconButton4);
             this.panel1.Controls.Add(this.iconButton3);
@@ -289,6 +291,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1061, 43);
             this.panel1.TabIndex = 11;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.iconButton6.AutoSize = true;
+            this.iconButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.HandPaper;
+            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton6.IconSize = 36;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.iconButton6.Location = new System.Drawing.Point(498, 1);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(0);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton6.Size = new System.Drawing.Size(42, 42);
+            this.iconButton6.TabIndex = 11;
+            this.iconButton6.TabStop = false;
+            this.iconButton6.UseVisualStyleBackColor = false;
+            this.iconButton6.Visible = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
             // 
             // UC_Inventory
             // 
@@ -320,5 +351,6 @@
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton5;
         private Panel panel1;
+        private FontAwesome.Sharp.IconButton iconButton6;
     }
 }

@@ -65,7 +65,7 @@ namespace In_Client.Controls.User.item
 
         private void button2_Click(object sender, EventArgs e)
         {
-            auth.WebAuth.RequestPatchAsync("api/item/" + itemId, (req) =>
+            auth.WebAuth.RequestPatchAsync("admin/item/" + itemId, (req) =>
             {
                 var item = req.GetJsonAsync<items.Item>().Result;
                 func(item);
